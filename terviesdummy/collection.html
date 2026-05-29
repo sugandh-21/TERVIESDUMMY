@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collection – TerviesDummy</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="announce-bar">
+  <p>✨ Free Shipping on orders above ₹999 &nbsp;|&nbsp; Use code <strong>TERVIES10</strong> for 10% off</p>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-left">
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="collection.html" class="active">Collection</a>
+      <a href="index.html#categories">Categories</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+  <a href="index.html" class="logo">Tervies<span>Dummy</span></a>
+  <div class="nav-right">
+    <button class="icon-btn" id="searchToggle"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <button class="icon-btn" onclick="location.href='wishlist.html'">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="badge" id="wishBadge">0</span>
+    </button>
+    <button class="icon-btn cart-btn" onclick="toggleCart()">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search products…" oninput="liveSearch(this.value)"/>
+    <button onclick="closeSearch()">✕</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a> <span>/</span> <span>Collection</span>
+</div>
+
+<!-- COLLECTION PAGE -->
+<div class="collection-layout">
+
+  <!-- SIDEBAR FILTERS -->
+  <aside class="filters-sidebar" id="filtersSidebar">
+    <div class="filter-header">
+      <h3>Filters</h3>
+      <button class="clear-filters" onclick="clearFilters()">Clear All</button>
+    </div>
+
+    <div class="filter-group">
+      <h4>Category</h4>
+      <label><input type="checkbox" name="cat" value="saree" onchange="applyFilters()"/> Sarees</label>
+      <label><input type="checkbox" name="cat" value="lehenga" onchange="applyFilters()"/> Lehengas</label>
+      <label><input type="checkbox" name="cat" value="kurti" onchange="applyFilters()"/> Kurtis</label>
+      <label><input type="checkbox" name="cat" value="sherwani" onchange="applyFilters()"/> Sherwanis</label>
+      <label><input type="checkbox" name="cat" value="anarkali" onchange="applyFilters()"/> Anarkalis</label>
+      <label><input type="checkbox" name="cat" value="dupatta" onchange="applyFilters()"/> Dupattas</label>
+    </div>
+
+    <div class="filter-group">
+      <h4>Price Range</h4>
+      <label><input type="radio" name="price" value="" onchange="applyFilters()" checked/> All Prices</label>
+      <label><input type="radio" name="price" value="0-999" onchange="applyFilters()"/> Under ₹999</label>
+      <label><input type="radio" name="price" value="1000-2999" onchange="applyFilters()"/> ₹1,000 – ₹2,999</label>
+      <label><input type="radio" name="price" value="3000-5999" onchange="applyFilters()"/> ₹3,000 – ₹5,999</label>
+      <label><input type="radio" name="price" value="6000-99999" onchange="applyFilters()"/> ₹6,000 & above</label>
+    </div>
+
+    <div class="filter-group">
+      <h4>Fabric</h4>
+      <label><input type="checkbox" name="fabric" value="silk" onchange="applyFilters()"/> Silk</label>
+      <label><input type="checkbox" name="fabric" value="cotton" onchange="applyFilters()"/> Cotton</label>
+      <label><input type="checkbox" name="fabric" value="georgette" onchange="applyFilters()"/> Georgette</label>
+      <label><input type="checkbox" name="fabric" value="chiffon" onchange="applyFilters()"/> Chiffon</label>
+      <label><input type="checkbox" name="fabric" value="net" onchange="applyFilters()"/> Net</label>
+    </div>
+
+    <div class="filter-group">
+      <h4>Occasion</h4>
+      <label><input type="checkbox" name="occasion" value="bridal" onchange="applyFilters()"/> Bridal</label>
+      <label><input type="checkbox" name="occasion" value="festive" onchange="applyFilters()"/> Festive</label>
+      <label><input type="checkbox" name="occasion" value="casual" onchange="applyFilters()"/> Casual</label>
+      <label><input type="checkbox" name="occasion" value="party" onchange="applyFilters()"/> Party</label>
+    </div>
+
+    <div class="filter-group">
+      <h4>Color</h4>
+      <div class="color-swatches">
+        <button class="swatch" style="background:#c0392b" title="Red" onclick="filterColor('red')"></button>
+        <button class="swatch" style="background:#1a237e" title="Blue" onclick="filterColor('blue')"></button>
+        <button class="swatch" style="background:#1b5e20" title="Green" onclick="filterColor('green')"></button>
+        <button class="swatch" style="background:#f9a825" title="Yellow" onclick="filterColor('yellow')"></button>
+        <button class="swatch" style="background:#880e4f" title="Pink" onclick="filterColor('pink')"></button>
+        <button class="swatch" style="background:#4a148c" title="Purple" onclick="filterColor('purple')"></button>
+        <button class="swatch" style="background:#212121" title="Black" onclick="filterColor('black')"></button>
+        <button class="swatch" style="background:#fff;border:1px solid #ccc" title="White" onclick="filterColor('white')"></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="collection-main">
+    <div class="collection-topbar">
+      <div class="collection-info">
+        <h1 id="collectionTitle">All Collections</h1>
+        <p id="productCount">Showing all products</p>
+      </div>
+      <div class="collection-controls">
+        <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilterSidebar()">⚙ Filters</button>
+        <div class="view-toggles">
+          <button id="gridView2" onclick="setView(2)" class="view-btn active" title="2 columns">⊞</button>
+          <button id="gridView3" onclick="setView(3)" class="view-btn" title="3 columns">⊟</button>
+          <button id="gridView4" onclick="setView(4)" class="view-btn" title="4 columns">⊠</button>
+        </div>
+        <select id="sortSelect" onchange="applyFilters()">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest First</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ACTIVE FILTER TAGS -->
+    <div class="active-filters" id="activeFilters"></div>
+
+    <div class="products-grid cols-3" id="collectionGrid"></div>
+
+    <!-- PAGINATION -->
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart (<span id="cartCount">0</span>)</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><p>🛍️ Your cart is empty</p><a href="#" class="btn-primary" onclick="toggleCart()">Start Shopping</a></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><strong id="cartTotal">₹0</strong></div>
+    <a href="checkout.html" class="btn-primary" style="width:100%;text-align:center;display:block">Proceed to Checkout</a>
+    <button class="btn-outline" style="width:100%;margin-top:.5rem" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="footer-bottom" style="padding:1.5rem 2rem">
+    <p>© 2025 TerviesDummy. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  // Collection page init
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    const sale = params.get('sale');
+    if (cat) {
+      const cb = document.querySelector(`input[name="cat"][value="${cat}"]`);
+      if (cb) { cb.checked = true; }
+    }
+    if (sale) { document.getElementById('collectionTitle').textContent = 'Sale Items'; }
+    applyFilters();
+    initCollectionPage();
+  });
+</script>
+</body>
+</html>

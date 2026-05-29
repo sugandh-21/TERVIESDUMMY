@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wishlist – TerviesDummy</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="announce-bar"><p>✨ Free Shipping on orders above ₹999</p></div>
+<header class="navbar" id="navbar">
+  <div class="nav-left">
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a><a href="collection.html">Collection</a>
+    </nav>
+  </div>
+  <a href="index.html" class="logo">Tervies<span>Dummy</span></a>
+  <div class="nav-right">
+    <button class="icon-btn" onclick="location.href='wishlist.html'" style="color:var(--accent)">
+      <svg width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="badge" id="wishBadge">0</span>
+    </button>
+    <button class="icon-btn cart-btn" onclick="toggleCart()">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Wishlist</span></div>
+
+<section class="section">
+  <div class="section-header">
+    <h2>My Wishlist</h2>
+    <p id="wishlistCount">0 items saved</p>
+  </div>
+  <div id="wishlistEmpty" style="text-align:center;padding:4rem;display:none">
+    <div style="font-size:4rem">♡</div>
+    <h3>Your wishlist is empty</h3>
+    <p>Save items you love by clicking the heart icon</p>
+    <a href="collection.html" class="btn-primary" style="display:inline-block;margin-top:1rem">Explore Collection</a>
+  </div>
+  <div class="products-grid" id="wishlistGrid"></div>
+  <div id="wishlistActions" style="display:none;text-align:center;margin-top:2rem">
+    <button class="btn-primary" onclick="addAllWishToCart()">Add All to Cart</button>
+    <button class="btn-outline" style="margin-left:1rem" onclick="clearWishlist()">Clear Wishlist</button>
+  </div>
+</section>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Cart (<span id="cartCount">0</span>)</h3><button onclick="toggleCart()">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><p>🛍️ Your cart is empty</p></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><strong id="cartTotal">₹0</strong></div>
+    <a href="checkout.html" class="btn-primary" style="width:100%;text-align:center;display:block">Proceed to Checkout</a>
+    <button class="btn-outline" style="width:100%;margin-top:.5rem" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>window.addEventListener('DOMContentLoaded', renderWishlistPage);</script>
+</body>
+</html>

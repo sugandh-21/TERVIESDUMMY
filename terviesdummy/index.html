@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TerviesDummy – Indian Ethnic Wear</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <p>✨ Free Shipping on orders above ₹999 &nbsp;|&nbsp; Use code <strong>TERVIES10</strong> for 10% off &nbsp;|&nbsp; New Arrivals Every Friday</p>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar" id="navbar">
+  <div class="nav-left">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="collection.html">Collection</a>
+      <a href="#categories">Categories</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <a href="index.html" class="logo">Tervies<span>Dummy</span></a>
+  <div class="nav-right">
+    <button class="icon-btn" id="searchToggle" aria-label="Search">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="Wishlist" onclick="location.href='wishlist.html'">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="badge" id="wishBadge">0</span>
+    </button>
+    <button class="icon-btn cart-btn" aria-label="Cart" onclick="toggleCart()">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="badge" id="cartBadge">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- SEARCH BAR -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search for sarees, kurtis, lehengas…" oninput="liveSearch(this.value)"/>
+    <button onclick="closeSearch()">✕</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="slide active" style="background: linear-gradient(135deg,#3d0c11 0%,#7b2d3a 50%,#c4783e 100%)">
+      <div class="slide-content">
+        <span class="slide-label">New Arrival</span>
+        <h1>Bridal Lehenga<br/><em>Collection 2025</em></h1>
+        <p>Handcrafted elegance for your most special moments</p>
+        <div class="hero-btns">
+          <a href="collection.html" class="btn-primary">Shop Now</a>
+          <a href="collection.html?cat=lehenga" class="btn-outline">View Lehengas</a>
+        </div>
+      </div>
+      <div class="slide-img"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&q=80" alt="Bridal Lehenga" loading="lazy"/></div>
+    </div>
+    <div class="slide" style="background: linear-gradient(135deg,#1a3a4a 0%,#2e6b7b 50%,#c8a96e 100%)">
+      <div class="slide-content">
+        <span class="slide-label">Trending</span>
+        <h1>Pure Silk<br/><em>Saree Range</em></h1>
+        <p>Woven traditions, timeless beauty</p>
+        <div class="hero-btns">
+          <a href="collection.html?cat=saree" class="btn-primary">Shop Sarees</a>
+          <a href="collection.html" class="btn-outline">All Collections</a>
+        </div>
+      </div>
+      <div class="slide-img"><img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=500&q=80" alt="Silk Saree" loading="lazy"/></div>
+    </div>
+    <div class="slide" style="background: linear-gradient(135deg,#1e3a1e 0%,#4a7c59 50%,#d4af72 100%)">
+      <div class="slide-content">
+        <span class="slide-label">Men's Wear</span>
+        <h1>Sherwani &amp;<br/><em>Kurta Collection</em></h1>
+        <p>Redefine your festive style with tradition</p>
+        <div class="hero-btns">
+          <a href="collection.html?cat=sherwani" class="btn-primary">Explore Men's</a>
+          <a href="collection.html" class="btn-outline">All Collections</a>
+        </div>
+      </div>
+      <div class="slide-img"><img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&q=80" alt="Sherwani" loading="lazy"/></div>
+    </div>
+  </div>
+  <div class="slide-dots" id="slideDots">
+    <button class="dot active" onclick="goSlide(0)"></button>
+    <button class="dot" onclick="goSlide(1)"></button>
+    <button class="dot" onclick="goSlide(2)"></button>
+  </div>
+  <button class="slide-arrow prev" onclick="changeSlide(-1)">&#8249;</button>
+  <button class="slide-arrow next" onclick="changeSlide(1)">&#8250;</button>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="trust-bar">
+  <div class="trust-item"><span>🚚</span><div><strong>Free Shipping</strong><p>On orders ₹999+</p></div></div>
+  <div class="trust-item"><span>🔄</span><div><strong>Easy Returns</strong><p>7-day hassle-free</p></div></div>
+  <div class="trust-item"><span>🔒</span><div><strong>Secure Payment</strong><p>100% safe checkout</p></div></div>
+  <div class="trust-item"><span>💎</span><div><strong>Premium Quality</strong><p>Handpicked fabrics</p></div></div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+  <div class="section-header">
+    <h2>Shop by Category</h2>
+    <p>Discover authentic Indian ethnic wear curated for every occasion</p>
+  </div>
+  <div class="cat-grid">
+    <a href="collection.html?cat=saree" class="cat-card big">
+      <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=600&q=80" alt="Sarees" loading="lazy"/>
+      <div class="cat-overlay"><span>Sarees</span><em>240+ styles</em></div>
+    </a>
+    <a href="collection.html?cat=lehenga" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80" alt="Lehenga" loading="lazy"/>
+      <div class="cat-overlay"><span>Lehengas</span><em>120+ styles</em></div>
+    </a>
+    <a href="collection.html?cat=kurti" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=400&q=80" alt="Kurtis" loading="lazy"/>
+      <div class="cat-overlay"><span>Kurtis</span><em>300+ styles</em></div>
+    </a>
+    <a href="collection.html?cat=sherwani" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&q=80" alt="Sherwani" loading="lazy"/>
+      <div class="cat-overlay"><span>Sherwani</span><em>80+ styles</em></div>
+    </a>
+    <a href="collection.html?cat=anarkali" class="cat-card">
+      <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=400&q=80" alt="Anarkali" loading="lazy"/>
+      <div class="cat-overlay"><span>Anarkali</span><em>150+ styles</em></div>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section bg-light" id="featured">
+  <div class="section-header">
+    <h2>New Arrivals</h2>
+    <p>Fresh styles added every week — be the first to wear them</p>
+  </div>
+  <div class="products-grid" id="featuredGrid"></div>
+  <div style="text-align:center;margin-top:2rem">
+    <a href="collection.html" class="btn-primary">View All Products</a>
+  </div>
+</section>
+
+<!-- OFFER BANNER -->
+<section class="offer-banner">
+  <div class="offer-content">
+    <h3>Festive Season Sale</h3>
+    <h2>Up to <span>50% OFF</span></h2>
+    <p>On selected Lehengas, Sarees & Kurtis — Limited time offer</p>
+    <a href="collection.html?sale=true" class="btn-primary">Shop the Sale</a>
+  </div>
+  <div class="offer-countdown" id="offerCountdown">
+    <div class="countdown-box"><span id="cdHours">00</span><label>Hours</label></div>
+    <div class="countdown-box"><span id="cdMins">00</span><label>Minutes</label></div>
+    <div class="countdown-box"><span id="cdSecs">00</span><label>Seconds</label></div>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section class="section">
+  <div class="section-header">
+    <h2>Bestsellers</h2>
+    <p>Loved by thousands of happy customers</p>
+  </div>
+  <div class="products-grid" id="bestsellersGrid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section bg-light">
+  <div class="section-header">
+    <h2>What Our Customers Say</h2>
+  </div>
+  <div class="testimonials">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"The saree I ordered was absolutely stunning! The fabric quality is exceptional and it arrived beautifully packed. Will definitely order again!"</p>
+      <div class="testi-author"><strong>Priya Sharma</strong><span>Delhi</span></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Bought a bridal lehenga for my sister's wedding. The embroidery work is just like the photos — maybe even better in person. Loved it!"</p>
+      <div class="testi-author"><strong>Anjali Mehta</strong><span>Mumbai</span></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★☆</div>
+      <p>"Quick delivery, amazing packaging, and the kurti fits perfectly. The colour is exactly as shown. Highly recommend TerviesDummy!"</p>
+      <div class="testi-author"><strong>Kavya Nair</strong><span>Bangalore</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="About TerviesDummy" loading="lazy"/>
+    </div>
+    <div class="about-text">
+      <span class="section-label">Our Story</span>
+      <h2>Celebrating the Art of Indian Craftsmanship</h2>
+      <p>TerviesDummy was born out of a deep love for India's rich textile heritage. We work directly with master weavers and artisans from Varanasi, Jaipur, Surat, and Kanchipuram to bring you authentic, handcrafted ethnic wear.</p>
+      <p>Every piece in our collection tells a story — of skilled hands, age-old techniques, and a commitment to keeping India's weaving traditions alive for the next generation.</p>
+      <a href="collection.html" class="btn-primary">Explore Our Story</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM STRIP -->
+<section class="insta-section">
+  <div class="section-header" style="padding-bottom:0">
+    <h2>@terviesdummy on Instagram</h2>
+    <p>Tag us for a chance to be featured</p>
+  </div>
+  <div class="insta-grid">
+    <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=300&h=300&fit=crop&q=70" alt="Instagram 1" loading="lazy"/>
+    <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=300&h=300&fit=crop&q=70" alt="Instagram 2" loading="lazy"/>
+    <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=300&h=300&fit=crop&q=70" alt="Instagram 3" loading="lazy"/>
+    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=300&h=300&fit=crop&q=70" alt="Instagram 4" loading="lazy"/>
+    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=300&fit=crop&q=70" alt="Instagram 5" loading="lazy"/>
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop&q=70" alt="Instagram 6" loading="lazy"/>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#f5e6c8">Tervies<span style="color:#c4783e">Dummy</span></a>
+      <p>Celebrating India's rich textile heritage through authentic ethnic wear crafted with love and tradition.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="WhatsApp">💬</a>
+        <a href="#" aria-label="Pinterest">📌</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="collection.html">Collection</a>
+      <a href="collection.html?sale=true">Sale</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="collection.html?cat=saree">Sarees</a>
+      <a href="collection.html?cat=lehenga">Lehengas</a>
+      <a href="collection.html?cat=kurti">Kurtis</a>
+      <a href="collection.html?cat=sherwani">Sherwanis</a>
+      <a href="collection.html?cat=anarkali">Anarkalis</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="#">Size Guide</a>
+      <a href="#">Shipping Info</a>
+      <a href="#">Returns & Exchanges</a>
+      <a href="#">Track Your Order</a>
+      <a href="#">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>📧 hello@terviesdummy.com</p>
+      <p>📞 +91 98765 43210</p>
+      <p>🕐 Mon–Sat, 9am–6pm</p>
+      <div style="margin-top:1rem">
+        <h4>Newsletter</h4>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Your email"/>
+          <button onclick="subscribeNewsletter()">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 TerviesDummy. All rights reserved.</p>
+    <div class="payment-icons">
+      <span>💳 Visa</span><span>💳 Mastercard</span><span>📱 UPI</span><span>📱 PhonePe</span><span>💚 GPay</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Cart (<span id="cartCount">0</span>)</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <p>🛍️ Your cart is empty</p>
+      <a href="collection.html" class="btn-primary" onclick="toggleCart()">Start Shopping</a>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total:</span><strong id="cartTotal">₹0</strong>
+    </div>
+    <a href="checkout.html" class="btn-primary" style="width:100%;text-align:center;display:block">Proceed to Checkout</a>
+    <button class="btn-outline" style="width:100%;margin-top:.5rem" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

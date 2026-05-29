@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product – TerviesDummy</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<div class="announce-bar"><p>✨ Free Shipping on orders above ₹999</p></div>
+<header class="navbar" id="navbar">
+  <div class="nav-left">
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a><a href="collection.html">Collection</a><a href="index.html#about">About</a>
+    </nav>
+  </div>
+  <a href="index.html" class="logo">Tervies<span>Dummy</span></a>
+  <div class="nav-right">
+    <button class="icon-btn" id="searchToggle"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <button class="icon-btn" onclick="location.href='wishlist.html'"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="badge" id="wishBadge">0</span></button>
+    <button class="icon-btn cart-btn" onclick="toggleCart()"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="badge" id="cartBadge">0</span></button>
+  </div>
+</header>
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box"><input type="text" id="searchInput" placeholder="Search…" oninput="liveSearch(this.value)"/><button onclick="closeSearch()">✕</button></div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+<div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="collection.html">Collection</a><span>/</span><span id="pdpBreadcrumb">Product</span></div>
+
+<!-- PRODUCT DETAIL -->
+<div class="pdp-layout" id="pdpLayout">
+  <div class="pdp-images" id="pdpImages">
+    <div class="pdp-thumbnails" id="pdpThumbs"></div>
+    <div class="pdp-main-img">
+      <img id="pdpMainImg" src="" alt="Product"/>
+      <button class="pdp-wish-btn" id="pdpWishBtn" onclick="toggleWishFromPDP()">♡</button>
+    </div>
+  </div>
+  <div class="pdp-info">
+    <span class="pdp-badge" id="pdpBadge"></span>
+    <h1 id="pdpName"></h1>
+    <div class="pdp-rating" id="pdpRating"></div>
+    <div class="pdp-price" id="pdpPrice"></div>
+    <p class="pdp-desc" id="pdpDesc"></p>
+
+    <div class="pdp-meta" id="pdpMeta"></div>
+
+    <div class="pdp-size-section">
+      <div class="size-header"><span>Select Size</span><a href="#" class="size-guide-link">Size Guide</a></div>
+      <div class="size-options" id="sizeOptions"></div>
+    </div>
+
+    <div class="pdp-qty">
+      <span>Quantity:</span>
+      <div class="qty-control">
+        <button onclick="changeQty(-1)">−</button>
+        <span id="pdpQty">1</span>
+        <button onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+
+    <div class="pdp-actions">
+      <button class="btn-primary pdp-cart-btn" onclick="addToPDPCart()">Add to Cart</button>
+      <button class="btn-outline pdp-wish-action" id="pdpWishAction" onclick="toggleWishFromPDP()">♡ Wishlist</button>
+    </div>
+    <button class="btn-buy-now" onclick="buyNow()">Buy Now</button>
+
+    <div class="pdp-guarantees">
+      <div><span>🚚</span> Free shipping on this order</div>
+      <div><span>🔄</span> 7-day easy returns</div>
+      <div><span>🔒</span> Secure payment</div>
+    </div>
+
+    <div class="pdp-accordion">
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">Product Details <span>+</span></button>
+        <div class="acc-body" id="pdpDetails"></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">Shipping & Returns <span>+</span></button>
+        <div class="acc-body"><p>We offer free shipping on all orders above ₹999. Standard delivery takes 5–7 working days. Express delivery (2–3 days) available for ₹149 extra.</p><p>Returns accepted within 7 days of delivery. Item must be unworn and in original packaging.</p></div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head" onclick="toggleAcc(this)">Care Instructions <span>+</span></button>
+        <div class="acc-body"><p>Dry clean recommended. Do not bleach. Store in a cool, dry place. Keep away from direct sunlight to preserve colour vibrancy.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<section class="section">
+  <div class="section-header"><h2>You May Also Like</h2></div>
+  <div class="products-grid" id="relatedGrid"></div>
+</section>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Cart (<span id="cartCount">0</span>)</h3><button onclick="toggleCart()">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><p>🛍️ Your cart is empty</p></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><strong id="cartTotal">₹0</strong></div>
+    <a href="checkout.html" class="btn-primary" style="width:100%;text-align:center;display:block">Proceed to Checkout</a>
+    <button class="btn-outline" style="width:100%;margin-top:.5rem" onclick="clearCart()">Clear Cart</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    loadPDP(id);
+  });
+</script>
+</body>
+</html>
